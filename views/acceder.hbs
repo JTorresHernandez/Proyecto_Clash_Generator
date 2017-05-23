@@ -1,0 +1,29 @@
+<form id="acceder" method="post">
+
+<input type="email" name="email" value="" placeholder="Ponga su email" >
+<br /><br />
+
+<input type="contraseña" name="contraseña" value="" placeholder="Ponga su contraseña">
+<br /><br />
+
+<input type="submit" value="Acceder">
+
+</form>
+
+<script type="text/javascript">
+
+    const formAcceder = document.querySelector('#acceder')
+    const formData = new FormData(formAcceder)
+
+    formAcceder.addEventListener('submit', event => {
+      event.preventDefault()
+        fetch('/api/acceder', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+          localStorage.setItem('token', data.token)
+        })
+    })
+</script>

@@ -1,0 +1,22 @@
+<script type="text/javascript">
+
+const myHeaders = new Headers();
+myHeaders.append('authorization', `Bearer ${localStorage.token}`)
+  let cartaLista = document.createElement('ul')
+
+  fetch('/api/carta', {
+    method: 'GET'
+  })
+  .then(res => res.json())
+  .then(data => {
+    data.cartas.map(carta => {
+      let text = document.createTextNode(carta.imagen)
+      let elem = document.createElement('li')
+      elem.appendChild(text)
+      cartaLista.appendChild(elem)
+    })
+    document.body.appendChild(cartaLista)
+  })
+
+
+</script>

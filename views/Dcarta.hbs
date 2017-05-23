@@ -1,0 +1,21 @@
+<form method="post" action="/api/eliminarcarta/#{formData}?_method=DELETE">
+
+<input type="nombre" name="" value="" placeholder="Ponga el nombre de la carta">
+<br /><br />
+<input type="submit" value="eliminar">
+
+<script type="text/javascript">
+const formCarta = document.querySelector('#eliminar')
+const formData = new FormData(formCarta)
+
+formCarta.addEventListener('submit', event => {
+  event.preventDefault()
+    fetch('/api/eliminarcarta', {
+      method: 'DELETE',
+      body: formData
+    })
+    .then(res=> res.json())
+    .then(data => console.log(data))
+      Almacenlocal.setItem('token', data.token)
+})
+</script>
