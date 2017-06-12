@@ -1,0 +1,21 @@
+<script type="text/javascript">
+
+let cartaLista = document.createElement('ul')
+
+fetch('/api/Mguardados', {
+  method: 'GET'
+})
+.then(res => res.json())
+.then(data => console.log(data)/*{
+  data.Mazo.map(Mazo => {
+    let text = document.createTextNode(Mazo.value1)
+    let elem = document.createElement('img')
+    elem.src = carta.imagen
+    elem.width = '60'
+    elem.appendChild(text)
+    cartaLista.appendChild(elem)
+  })
+  document.body.appendChild(cartaLista)
+}*/)
+
+</script>

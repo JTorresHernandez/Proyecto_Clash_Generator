@@ -2,9 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>API PRUEBA NODEJS</title>
+    <title>Clash Royale Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Aqui poner los links bootstrap y css-->
+
+                    <nav class="navbar navbar-inverse">
+                      <div class="container-fluid">
+                        <ul class="nav navbar-nav">
+                          {{#unless cuenta}}
+                          <li><a href="/"><h4 style="color:white;">Mazo aleatorio</h4></a></li>
+                          <li><a href="/PMazos"><h4 style="color:white;">Mazos populares</h4></a></li>
+                          <li><a href="/registrarse"><h4 style="color:#D61AC6;">Registrarse</h4></a></li>
+                          <li><a href="/acceder"><h4 style="color:#D61AC6;">Acceder</h4></a></li>
+                          {{/unless}}
+                          {{#if cuenta}}
+                          <li><a href="/"><h4 style="color:white;">Mazo aleatorio</h4></a></li>
+                          <li><a href="/PMazos"><h4 style="color:white;">Mazos populares</h4></a></li>
+                          <li><a href="/Mguardado"><h4 style="color:white;">Mazos guardados</h4></a></li>
+                          <li><a href="/api/logout"><h4 style="color:#D61AC6;">Desconectarse</h4></a></li>
+                          {{/if}}
+                        </ul>
+                      </div>
+                    </nav>
+
   </head>
   <body>
+
+
     {{{ body }}}
   </body>
 </html>

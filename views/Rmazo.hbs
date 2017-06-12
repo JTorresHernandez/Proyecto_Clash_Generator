@@ -1,22 +1,132 @@
+
+<input id="user" style="visibility: hidden;" value={{user.email}}>
+
 <script type="text/javascript">
 
-const myHeaders = new Headers();
-myHeaders.append('authorization', `Bearer ${localStorage.token}`)
+
+var cont = 'false'
+function RandomNoLegendario(){
+
   let cartaLista = document.createElement('ul')
 
-  fetch('/api/carta', {
+  fetch('/api/RSLmazo', {
     method: 'GET'
   })
   .then(res => res.json())
   .then(data => {
     data.cartas.map(carta => {
       let text = document.createTextNode(carta.imagen)
-      let elem = document.createElement('li')
-      elem.appendChild(text)
-      cartaLista.appendChild(elem)
-    })
-    document.body.appendChild(cartaLista)
-  })
+      let elem = document.createElement('img')
 
+      elem.id = 'array_carta'
+      elem.src = carta.imagen
+      elem.width = '60'
+      elem.appendChild(text)
+      cartaLista.appendChild(elem);
+      cartaLista.id = "caja"
+      cartaLista.style = 'border-style: dashed;margin-top: 20px; margin-left:4%;'
+      cartaLista.className = 'col-xs-11 col-sm-11 col-lg-3 col-md-3 col-md-offset-0 col-lg-offset-0'
+
+    })
+
+if (cont === 'true'){
+  for (var i = 0; i< 8; i++){
+var array_carta = document.getElementById('array_carta');
+array_carta.parentNode.removeChild(array_carta);
+}
+  cont = 'false'
+  var caja = document.getElementById('caja');
+  caja.remove(caja)
+  RandomNoLegendario();
+}else if(cont === 'false'){
+document.body.appendChild(cartaLista)
+cont = 'true'
+}
+    })
+}
+function Random(){
+
+  let cartaLista = document.createElement('div')
+
+  fetch('/api/Rmazo', {
+    method: 'GET'
+  })
+  .then(res => res.json())
+  .then(data => {
+    data.cartas.map(carta => console.log(data)/*{
+      let text = document.createTextNode(carta.imagen)
+      let elem = document.createElement('img')
+
+      elem.id = 'array_carta'
+      elem.src = carta.imagen
+      elem.width = '60'
+      elem.appendChild(text)
+      cartaLista.appendChild(elem);
+      cartaLista.id = "caja"
+      cartaLista.style = 'border-style: dashed;margin-top: 20px; margin-left:4%;'
+      cartaLista.className = 'col-xs-11 col-sm-11 col-lg-3 col-md-3 col-md-offset-0 col-lg-offset-0'
+    }*/)
+
+if (cont === 'true'){
+  for (var i = 0; i< 8; i++){
+var array_carta = document.getElementById('array_carta');
+array_carta.parentNode.removeChild(array_carta);
+}
+  cont = 'false'
+var caja = document.getElementById('caja');
+caja.remove(caja)
+
+  Random();
+}else if(cont === 'false'){
+document.body.appendChild(cartaLista)
+cont = 'true'
+}
+    })
+}
+
+function guardarMazo() {
+var user = document.getElementById('user');
+var userval = user.value
+
+var x = ["value1", "value2", "value3", "value4","value7", "value5", "value6", "value8"];
+var inicio;
+  for (var i = 0, inicio = x.length; i< inicio; i++){
+var array_carta = document.getElementById('array_carta').getAttribute("src");
+document.getElementById(x[i]).value = document.getElementById('array_carta').getAttribute("src")
+document.getElementById("array_carta").id="guardado";
+
+}
+if(userval != ""){
+for (var i = 0; i< 8; i++){
+document.getElementById("guardado").id="array_carta"
+}
+alert("Cartas guardadas!!");
+document.getElementById("guardarMazo").submit();
+}
+else{
+  for (var i = 0; i< 8; i++){
+  document.getElementById("guardado").id="array_carta"
+  }
+    alert("Necesitas estar registrado!!");
+  }
+}
 
 </script>
+
+<form action="/api/Gmazo" method="post" id="guardarMazo">
+
+<input style="visibility: hidden;display: none;" type="text" name="value1" id="value1"/>
+<input style="visibility: hidden;display: none;" type="text" name="value2" id="value2"/>
+<input style="visibility: hidden;display: none;" type="text" name="value3" id="value3"/>
+<input style="visibility: hidden;display: none;" type="text" name="value4" id="value4"/>
+<input style="visibility: hidden;display: none;" type="text" name="value5" id="value5"/>
+<input style="visibility: hidden;display: none;" type="text" name="value6" id="value6"/>
+<input style="visibility: hidden;display: none;" type="text" name="value7" id="value7"/>
+<input style="visibility: hidden;display: none;" type="text" name="value8" id="value8"/>
+
+
+</form>
+
+<input type="button" value="Mazo sin legendarias" onclick="RandomNoLegendario()"/>
+<input type="button" value="Aleatorio" onclick="Random()"/>
+<input type="button" value="Guardar Mazo" onclick="guardarMazo();"/>

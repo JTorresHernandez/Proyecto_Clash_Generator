@@ -6,25 +6,26 @@ const bcrypt = require('bcrypt-nodejs')
 const crypto = require('crypto')
 
 const UserSchema = new Schema({
-  email: { type: String, unique: true, lowecase:true},
+  email: { type: String, unique: true, lowercase:true},
   username: String,
   avatar:String,
-  contraseña: {type: String, select:false},
+  password: {type: String, select:true},
   FechaAcceso: {type: Date, default: Date.now()},
-  UltimoAcceso: Date
+  UltimoAcceso: Date,
+  Mazo: { type : Array , "default" : [] }
 })
-
+//registrarse error
 UserSchema.pre('save', (next) => {
 let user = this
-if(!user.isModified('contraseña')) return next()
+//if(!user.isModified('password')) return next()
 
 bcrypt.genSalt(10, (err, salt) => {
     if (err) return next(err)
 
-      bcrypt.hash(user.contraseña, salt, null, (err, hash) => {
+      bcrypt.hash(user.password, salt, null, (err, hash) => {
         if (err) return next (err)
 
-        user.contraseña = hash
+        user.password = hash
         next()
       })
   })
@@ -39,7 +40,3 @@ UserSchema.methods.gravatar = function() {
 }
 
 module.exports = mongoose.model('User', UserSchema)
-
-/*
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTUxMTU3NjQsImV4cCI6MTQ5NTI4ODU2NH0.wekOoaNWO8sJR18ZLN4MaGNbGoCKnLBImbJjH5sjyzM
-token (prueba@gmail.com, prueba, prueba)*/

@@ -1,29 +1,25 @@
-<form id="acceder" method="post">
 
-<input type="email" name="email" value="" placeholder="Ponga su email" >
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="background-color:#333">
+        <h4 style="color:white;font-family:'Open Sans';">Acceder</h4>
+        </div>
+        <div class="panel-body">
+        <form action="/api/acceder" method="post">
+<span style="font-weight: bold;">E-mail:</span>
+<input type="email" name="username" value="" placeholder="Ponga su email" class="form-control">
 <br /><br />
 
-<input type="contraseña" name="contraseña" value="" placeholder="Ponga su contraseña">
-<br /><br />
+<span style="font-weight: bold;">Contraseña:</span>
+        <input type="password" name="password" value="" placeholder="Ponga su contraseña" class="form-control">
+        <br /><br />
 
-<input type="submit" value="Acceder">
+        <input type="submit" value="Acceder">
+        </form>
+      </div>
+    </div>
 
-</form>
-
-<script type="text/javascript">
-
-    const formAcceder = document.querySelector('#acceder')
-    const formData = new FormData(formAcceder)
-
-    formAcceder.addEventListener('submit', event => {
-      event.preventDefault()
-        fetch('/api/acceder', {
-          method: 'POST',
-          body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-          localStorage.setItem('token', data.token)
-        })
-    })
-</script>
+    </div>
+</div>

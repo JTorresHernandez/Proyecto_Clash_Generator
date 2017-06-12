@@ -1,21 +1,24 @@
-<form method="post" action="/api/eliminarcarta/#{formData}?_method=DELETE">
-
-<input type="nombre" name="" value="" placeholder="Ponga el nombre de la carta">
-<br /><br />
+{{#if cuenta}}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading"style="background-color:#333">
+          <h4 style="color:white;font-family:'Open Sans';">Eliminar carta</h4>
+          </div>
+          <div class="panel-body">
+<form method="post" action="/api/Dcarta">
+<span style="font-weight: bold;">Nombre:</span>
+<input type="nombre" name="nombre" placeholder="Introduzca la carta a eliminar" class="form-control">
+<br />
 <input type="submit" value="eliminar">
+</div>
+</div>
+</div>
+</div>
 
-<script type="text/javascript">
-const formCarta = document.querySelector('#eliminar')
-const formData = new FormData(formCarta)
 
-formCarta.addEventListener('submit', event => {
-  event.preventDefault()
-    fetch('/api/eliminarcarta', {
-      method: 'DELETE',
-      body: formData
-    })
-    .then(res=> res.json())
-    .then(data => console.log(data))
-      Almacenlocal.setItem('token', data.token)
-})
-</script>
+
+
+
+
+{{/if}}

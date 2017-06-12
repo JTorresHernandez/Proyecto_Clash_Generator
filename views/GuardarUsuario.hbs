@@ -1,0 +1,12 @@
+{{#if cuenta}}
+<input id="user" style="visibility: hidden;" value={{user.email}}>
+<form action="/api/Gusuario" method="post" id="GuardarUsuario">
+<input style="visibility: hidden;display: none;" type="text" name="userval" id="userval"/>
+</form>
+<script type="text/javascript">
+var user = document.getElementById('user');
+var userval = user.value
+document.getElementById("userval").value = userval
+document.getElementById("GuardarUsuario").submit();
+</script>
+{{/if}}

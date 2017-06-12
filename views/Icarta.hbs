@@ -1,32 +1,31 @@
-<form id="introducir" method="post">
+{{#if cuenta}}
 
-<input type="nombre" name="nombre" placeholder="Ponga el nombre de la carta">
-<br /><br />
-<input type="imagen" name="imagen" placeholder="Ponga su imagen">
-<br /><br />
-<input type="coste" name="coste" placeholder="Ponga el coste de elixir">
-<br /><br />
-<input type="categoria" name="categoria" placeholder="Elija entre legendaria, epica, especial y comun">
-<br /><br />
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="background-color:#333">
+        <h4 style="color:white;font-family:'Open Sans';">Introducir Carta</h4>
+        </div>
+        <div class="panel-body">
+
+<form action="/api/Icarta" method="post">
+<span style="font-weight: bold;">Nombre:</span>
+<input type="nombre" name="nombre" placeholder="Introduzca el nombre de la carta" class="form-control">
+<br />
+<span style="font-weight: bold;">Imagen:</span>
+<input type="imagen" name="imagen" placeholder="Introduzca la imagen de la carta" class="form-control">
+<br />
+<span style="font-weight: bold;">Coste de elixir:</span>
+<input type="coste" name="coste" placeholder="Introduzca el coste de elixir" class="form-control">
+<br />
+<span style="font-weight: bold;">Categoria:</span>
+<input type="categoria" name="categoria" placeholder="Elija la categoria entre: legendaria, epica, especial y comun" class="form-control">
+<br />
 <input type="submit" value="Introducir">
 </form>
+      </div>
+    </div>
+    </div>
+</div>
 
-<script type="text/javascript">
-
-const formCarta = document.getElementById('introducir')
-const formData = new FormData(formCarta)
-
-formCarta.addEventListener('submit', event => {
-  event.preventDefault()
-    fetch('/api/Icarta', {
-      method: 'POST',
-      body: formData
-
-    })
-    .then(res => res.json())
-    .then(formData => {
-      console.log(formData)
-    })
-
-})
-</script>
+    {{/if}}
