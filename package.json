@@ -1,7 +1,7 @@
 {
   "name": "clash-royale-generator",
   "version": "1.0.0",
-  "description": "Proyecto Clash_royale_generator con node.js, express, mongoose y vue.js",
+  "description": "Proyecto Clash_royale_generator con node.js, express, mongoose y handlebars",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
