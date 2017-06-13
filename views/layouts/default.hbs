@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style>
+    @font-face{
+      font-family: "acme";
+      font-style: normal;
+      font-weight: normal;
+      url("/font/Acme-Regular.ttf") format("truetype");
+    }
+
+  </style>
     <meta charset="utf-8">
     <title>Clash Royale Generator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--Aqui poner los links bootstrap y css-->
 
-                    <nav class="navbar navbar-inverse">
+                    <nav class="navbar" style="background: #EBEBEB;">
                       <div class="container-fluid">
                         <ul class="nav navbar-nav">
                           {{#unless cuenta}}
-                          <li><a href="/"><h4 style="color:white;">Mazo aleatorio</h4></a></li>
-                          <li><a href="/PMazos"><h4 style="color:white;">Mazos populares</h4></a></li>
-                          <li><a href="/registrarse"><h4 style="color:#D61AC6;">Registrarse</h4></a></li>
-                          <li><a href="/acceder"><h4 style="color:#D61AC6;">Acceder</h4></a></li>
+                          <li ><a href="/" ><h4 style="font-family:acme;color:#CFCC15;"><strong>Mazo aleatorio</strong></h4></a></li>
+                          <li><a href="/PMazos"><h4 style="font-family:acme;color:#CFCC15;"><strong>Mazos populares</strong></h4></a></li>
+                          <!--<li><a href="/registrarse"><h4 style="color:#D61AC6;">Registrarse</h4></a></li>-->
+                          <li><a href="/acceder"><h4 style="font-family:acme;color:#D61AC6;"><strong>Acceder</strong></h4></a></li>
                           {{/unless}}
                           {{#if cuenta}}
-                          <li><a href="/"><h4 style="color:white;">Mazo aleatorio</h4></a></li>
-                          <li><a href="/PMazos"><h4 style="color:white;">Mazos populares</h4></a></li>
-                          <li><a href="/Mguardado"><h4 style="color:white;">Mazos guardados</h4></a></li>
-                          <li><a href="/api/logout"><h4 style="color:#D61AC6;">Desconectarse</h4></a></li>
+                          <li><a href="/"><h4 style="font-family:acme;color:#CFCC15;"><strong>Mazo aleatorio</strong></h4></a></li>
+                          <li><a href="/PMazos"><h4 style="font-family:acme;color:#CFCC15;"><strong>Mazos populares</strong></h4></a></li>
+                          <li><a href="/carta"><h4 style="font-family:acme;color:#CFCC15;"><strong>Ver Cartas</strong></h4></a></li>
+                          <li><a href="/Icarta"><h4 style="font-family:acme;color:#CFCC15;"><strong>Introducir carta</strong></h4></a></li>
+                          <li><a href="/Dcarta"><h4 style="font-family:acme;color:#CFCC15;"><strong>Eliminar carta</strong></h4></a></li>
+                          <!--<li><a href="/Mguardado"><h4 style="color:white;">Mazos guardados</h4></a></li>-->
+                          <li><a href="/api/logout"><h4 style="font-family:acme;color:#D61AC6;">Desconectarse</h4></a></li>
                           {{/if}}
                         </ul>
                       </div>
@@ -28,8 +40,19 @@
 
   </head>
   <body>
+    <style>
+    body {
+      background: url(fondo.jpeg) center repeat;
+      background-size: cover;}
 
+      @font-face{
+        font-family: "acme";
+        font-style: normal;
+        font-weight: normal;
+        url("/font/Acme-Regular.ttf") format("truetype");
+      }
 
+    </style>
     {{{ body }}}
   </body>
 </html>

@@ -31,14 +31,14 @@ app.engine('.hbs', hbs({
 
 }))
 
-app.set('view engine', '.hbs')
-app.use('/api', api)
-app.get('/Mguardado', (req, res) => {
-  res.render('MGuardados', {
-    cuenta: req.isAuthenticated(),
-    user: req.user
-  })
-})
+//app.set('view engine', '.hbs')
+//app.use('/api', api)
+//app.get('/Mguardado', (req, res) => {
+//  res.render('MGuardados', {
+//    cuenta: req.isAuthenticated(),
+//    user: req.user
+//  })
+//})
 app.set('view engine', '.hbs')
 app.use('/api', api)
 app.get('/Gusuario', (req, res) => {

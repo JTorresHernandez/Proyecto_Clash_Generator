@@ -113,9 +113,93 @@ function randomSinLegendarias(req, res) {
   })
 }
 
+function randomArena1(req, res) {
+
+
+  var filtro = {nombre: {$in: ["flechas","bombardero","arqueras", "cabalero", "bolafuego", "minipekka", "mosquetera", "gigante", "principe", "bebedragon", "ejercitoesqueletos", "bruja", "lanceros", "duendes", "chozadeduendes", "valquiria", "rayo", "barrildeduendes"]}}
+  Carta.findRandom(filtro).limit(8).exec(function(err, cartas) {
+  if (err) res.status(500).send({message: `Error al randomizar las cartas no legendarias ${err}`})
+      res.status(200).send({cartas})
+  })
+
+  Carta.syncRandom(function(err, result) {
+    if (err) res.status(500).send({message: `Error al sincronizar las cartas ${err}`})
+  })
+}
+
+function randomArena2(req, res) {
+
+
+  var filtro = {nombre: {$in: ["flechas","bombardero","arqueras", "cabalero", "bolafuego", "minipekka", "mosquetera", "gigante", "principe", "bebedragon", "ejercitoesqueletos", "bruja", "lanceros", "duendes", "chozadeduendes", "valquiria","esqueletos", "barrildeduendes", "rayo", "esbirros", "lapida", "torrebombardera", "esqueletogigante", "globobombastico"]}}
+  Carta.findRandom(filtro).limit(8).exec(function(err, cartas) {
+  if (err) res.status(500).send({message: `Error al randomizar las cartas no legendarias ${err}`})
+      res.status(200).send({cartas})
+  })
+
+  Carta.syncRandom(function(err, result) {
+    if (err) res.status(500).send({message: `Error al sincronizar las cartas ${err}`})
+  })
+}
+
+function randomArena3(req, res) {
+
+
+  var filtro = {nombre: {$in: ["flechas","bombardero","arqueras", "cabalero", "bolafuego", "minipekka", "mosquetera", "gigante", "principe", "bebedragon", "ejercitoesqueletos", "bruja", "lanceros", "duendes", "chozadeduendes", "valquiria","esqueletos", "barrildeduendes", "rayo", "esbirros", "lapida", "torrebombardera", "esqueletogigante", "globobombastico", "cañon", "barbaros", "cohete", "chozadebarbaros", "furia", "ballesta"]}}
+  Carta.findRandom(filtro).limit(8).exec(function(err, cartas) {
+  if (err) res.status(500).send({message: `Error al randomizar las cartas no legendarias ${err}`})
+      res.status(200).send({cartas})
+  })
+
+  Carta.syncRandom(function(err, result) {
+    if (err) res.status(500).send({message: `Error al sincronizar las cartas ${err}`})
+  })
+}
+
+function randomCoste3(req, res) {
+
+
+  var filtro = {coste: {$in: [1,2,3]}}
+  Carta.findRandom(filtro).limit(8).exec(function(err, cartas) {
+  if (err) res.status(500).send({message: `Error al randomizar las cartas no legendarias ${err}`})
+      res.status(200).send({cartas})
+  })
+
+  Carta.syncRandom(function(err, result) {
+    if (err) res.status(500).send({message: `Error al sincronizar las cartas ${err}`})
+  })
+}
+
+function randomCoste4(req, res) {
+
+
+  var filtro = {coste: {$in: [1,2,3,4]}}
+  Carta.findRandom(filtro).limit(8).exec(function(err, cartas) {
+  if (err) res.status(500).send({message: `Error al randomizar las cartas no legendarias ${err}`})
+      res.status(200).send({cartas})
+  })
+
+  Carta.syncRandom(function(err, result) {
+    if (err) res.status(500).send({message: `Error al sincronizar las cartas ${err}`})
+  })
+}
+
+function randomCoste5(req, res) {
+
+
+  var filtro = {coste: {$in: [1,2,3,4,5]}}
+  Carta.findRandom(filtro).limit(8).exec(function(err, cartas) {
+  if (err) res.status(500).send({message: `Error al randomizar las cartas no legendarias ${err}`})
+      res.status(200).send({cartas})
+  })
+
+  Carta.syncRandom(function(err, result) {
+    if (err) res.status(500).send({message: `Error al sincronizar las cartas ${err}`})
+  })
+}
+
 function popularesMazos8(req, res) {
 
-  Carta.find({'nombre' : {$in: ['caballero', 'pekka', 'tronco', 'bebedragon', 'arqueras', 'mosquetera', 'mago', 'descarga', 'bolafuego']}}, (err, cartas) => {
+  Carta.find({'nombre' : {$in: ['caballero', 'pekka', 'bebedragon', 'arqueras', 'mosquetera', 'mago', 'descarga', 'bolafuego']}}, (err, cartas) => {
     if (err) return res.status(500).send({message: `Error al realizar las peticiones de las cartas: ${err}`});
     if (!cartas) return res.status(404).send({message: `No existen cartas`});
 
@@ -239,6 +323,12 @@ module.exports = {
   popularesMazos102,
   popularesMazos103,
   GuardarUsuario,
+  randomArena1,
+  randomArena2,
+  randomArena3,
+  randomCoste3,
+  randomCoste4,
+  randomCoste5,
   randomCarta
 
 }

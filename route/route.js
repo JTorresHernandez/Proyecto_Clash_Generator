@@ -10,7 +10,7 @@ const api = express.Router()
 
 
 api.get("/carta", CartaController.getCartas)
-api.get("/Mguardados", CartaController.mazosGuardados)
+//api.get("/Mguardados", CartaController.mazosGuardados)
 api.post("/Gusuario", CartaController.GuardarUsuario)
 api.post("/Icarta",auth.isLogged, CartaController.saveCarta)
 api.post("/Gmazo", CartaController.guardarMazo)
@@ -21,6 +21,15 @@ api.post("/acceder", passport.authenticate('local',{
 }))
 api.get("/Rmazo", CartaController.randomCarta)
 api.get("/RSLmazo", CartaController.randomSinLegendarias)
+
+api.get("/RmazoA1", CartaController.randomArena1)
+api.get("/RmazoA2", CartaController.randomArena2)
+api.get("/RmazoA3", CartaController.randomArena3)
+
+api.get("/RmazoC3", CartaController.randomCoste3)
+api.get("/RmazoC4", CartaController.randomCoste4)
+api.get("/RmazoC5", CartaController.randomCoste5)
+
 api.get("/Pmazos8", CartaController.popularesMazos8)
 api.get("/Pmazos82", CartaController.popularesMazos82)
 api.get("/Pmazos83", CartaController.popularesMazos83)
