@@ -1,0 +1,9 @@
+{
+  "name": "clash_royale_generator",
+  "version": "0.0.4",
+  "description": "\"APP automatizador de mazos\"",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}
